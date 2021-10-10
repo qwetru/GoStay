@@ -1,0 +1,31 @@
+<% layout('layout/boilerplate')%>
+
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://source.unsplash.com/w72a24brINI/1600x900" alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Register</h5>
+                        <form action="/register" method="POST" class="needs-validation" novalidate>
+                            <div class='mb-3'>
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="email" name="email" id="email" required autofocus>
+                            </div>
+                            <div class='mb-3'>
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" name="username" id="username" autofocus
+                                    required>
+                            </div>
+                            <div class='mb-3'>
+                                <label class="form-label" for="title">Password</label>
+                                <input class="form-control" type="password" name="password" id="password" required>
+                            </div>
+                            <button class="btn btn-success">Register</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

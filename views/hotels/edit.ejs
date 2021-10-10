@@ -1,0 +1,52 @@
+<% layout('layout/boilerplate')%>
+    <div class="row">
+        <h1 class="text-center">Edit Hotel</h1>
+        <div class="col-8 offset-3">
+            <form action="/hotels/<%=fhotel._id%>?_method=PUT" method="POST" class="needs-validation"
+                enctype="multipart/form-data" novalidate>
+                <div class='mb-3'>
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="hotel[title]" id="title" value="<%= fhotel.title %>"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">location</label>
+                    <input class="form-control" type="text" name="hotel[location]" id="location"
+                        value="<%=fhotel.location%>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Add Image(s)</label>
+                    <input class="form-control" type="file" id="image" name="image" multiple required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Hotel Price</label>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="<%=fhotel.price%>"
+                            aria-label="price" value="<%= fhotel.price %>" name="hotel[price]"
+                            aria-describedby="addon-wrapping" required>
+                    </div>
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="hotel[description]"
+                        id="location"><%= fhotel.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class=" btn btn-info text-light" type="submit">Done</button>
+                    <a href="/hotels" class="btn btn-danger">Cancel</a>
+                </div>
+                <div class="mb-3 ">
+                    <% fhotel.images.forEach( function(img, i) { %>
+                        <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" name="deleteImage[]" value="<%= img.filename %>" id="image-<%= i %>">
+                            <label for="image-<%= i %>">Delete</label>
+                        </div>
+                        <%})%>
+                </div>
+
+            </form>
+        </div>
+    </div>
